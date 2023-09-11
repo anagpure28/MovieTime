@@ -9,7 +9,7 @@ import { Details } from './pages/details/Details';
 import { SearchResultPage } from './pages/searchResultPage/SearchResultPage';
 import { PageNotFound } from './pages/404/pageNotFound';
 import { Explore } from './pages/explore/Explore';
-import { Header } from './components/header/Header';
+import Header from './components/header/Header';
 import { Footer } from './components/footer/Footer';
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:mediaType/:id" element={<Details />} />
@@ -46,7 +46,7 @@ function App() {
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   )
 }
