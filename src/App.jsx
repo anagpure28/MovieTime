@@ -10,7 +10,7 @@ import { SearchResultPage } from './pages/searchResultPage/SearchResultPage';
 import { PageNotFound } from './pages/404/pageNotFound';
 import { Explore } from './pages/explore/Explore';
 import Header from './components/header/Header';
-import { Footer } from './components/footer/Footer';
+import Footer from './components/footer/Footer';
 
 function App() {
   const dispatch = useDispatch();
