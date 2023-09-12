@@ -12,7 +12,7 @@ const Trending = () => {
   const onTabChange = (tab) => {
     setEndpoint(tab === "Day" ? "day" : "week");
   }
-  console.log(endpoint)
+  console.log(data)
 
   return (
     <div className="carouselSection">

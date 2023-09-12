@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { fetchDataFromApi } from './utils/api';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getApiConfiguration } from './store/homeSlice';
+import { getApiConfiguration, genGenres } from './store/homeSlice';
 import { Home } from './pages/home/Home';
 import { Details } from './pages/details/Details';
 import { SearchResultPage } from './pages/searchResultPage/SearchResultPage';
@@ -15,12 +15,12 @@ import Footer from './components/footer/Footer';
 function App() {
   const dispatch = useDispatch();
   const {url} = useSelector((state)=> state.home);
-  console.log(url);
+  // console.log(url);
 
   const fetchApiConfig = () => {
     fetchDataFromApi("/configuration")
     .then((res)=> {
-      console.log(res);
+      // console.log(res);
 
       const url = {
         backdrop: res.images.secure_base_url + "original",
@@ -32,8 +32,30 @@ function App() {
     })
   }
 
+  // Adding genres
+  const genresCall = async() => {
+    let promises = [];
+    let endPoints = ["tv", "movie"];
+    let allGenres = {};
+
+    // Returns all promises at the same time
+    endPoints.forEach((url)=> {
+      promises.push(fetchDataFromApi(`/genre/${url}/list`));
+    });
+
+    const data = await Promise.all(promises);
+    console.log(data);
+    data.map(({genres}) => {
+      // Returning genres with id as a key and whole genre as a value
+      return genres.map((item)=> (allGenres[item.id] = item));
+    });
+
+    dispatch(genGenres(allGenres))
+  }
+
   useEffect(()=> {
     fetchApiConfig();
+    genresCall()
   },[]);
 
   return (
