@@ -11,6 +11,7 @@ import "./style.scss";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import Img from "../lazyLoadImage/Img";
 import PosterFallback from "../../assets/no-poster.png";
+import CircleRating from "../circleRating/CircleRating";
 
 const Carousel = ({data, loading}) => {
 
@@ -43,7 +44,7 @@ const Carousel = ({data, loading}) => {
                 onClick={()=> navigation("left")}
             />
             <BsFillArrowRightCircleFill 
-                className="carouselRightNav arrow"
+                className="carouselRighttNav arrow"
                 onClick={()=> navigation("right")}
             />
             {!loading ? (
@@ -56,6 +57,7 @@ const Carousel = ({data, loading}) => {
                             <div key={item.id} className="carouselItem">
                                 <div className="posterBlock">
                                     <Img src={posterUrl} />
+                                    <CircleRating rating={item.vote_average.toFixed(1)} />
                                 </div>
                                 <div className="textBlock">
                                     <span className="title">
