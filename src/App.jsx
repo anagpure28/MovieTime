@@ -7,7 +7,7 @@ import { getApiConfiguration, genGenres } from './store/homeSlice';
 import { Home } from './pages/home/Home';
 import { Details } from './pages/details/Details';
 import { SearchResultPage } from './pages/searchResultPage/SearchResultPage';
-import { PageNotFound } from './pages/404/pageNotFound';
+import PageNotFound from './pages/404/pageNotFound';
 import Explore from './pages/explore/Explore';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
